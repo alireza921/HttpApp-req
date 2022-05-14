@@ -24,3 +24,6 @@ yarn-error.log*
 
 #file cherk nevis e dg !
 chek nevis 
+
+#node module 
+node_modules/

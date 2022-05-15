@@ -3,6 +3,7 @@ import styles from "./style.module.css";
 import Comment from "../component/comment/CommentCmp";
 import axios from "axios";
 import FullComment from "./FullComment/fullComment";
+import AddComment from "./addNewComment/AddNewComment";
 
 const HttpApp = () => {
   const [comment, setComment] = useState(null);
@@ -22,7 +23,7 @@ const HttpApp = () => {
      
   }
 
-  console.log(commentId);
+  // console.log(commentId);
 
   return (
     <main className={styles.holder}>
@@ -41,11 +42,7 @@ const HttpApp = () => {
       </section>
 
       <section className={styles.addCommentHolder}>
-        <form className={styles.addComment}>
-          <input type='text' />
-          <input type='email' />
-          <button type='submit'> Add Comment</button>
-        </form>
+        <AddComment/> 
       </section>
     </main>
   );

@@ -2,7 +2,7 @@
 
 .holder { 
     width: 79%;
-    height: 100vh;
+    height: 120vh;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -27,7 +27,7 @@
     border-radius: 12px;
     font-size: 20px;
     padding: 5px;
-    margin: 5px;
+    margin: 12px 0px;
 }
 
 .addCommentHolder { 
@@ -37,24 +37,4 @@
     align-items: center;
     align-content: center;
     width: 100%;
-}
-.addComment { 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 500px;
-    height: 150px;
-
-}
-
-.addComment input { 
-    width: 100%;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
-    border: solid 2px #c7d2fe;
-}
-
-.addComment input :focus { 
-    border: solid 1px #3730a3;
 }

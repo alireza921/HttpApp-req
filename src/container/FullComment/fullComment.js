@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const FullComment = ({ commentId }) => {
   const [fullComment, setFullComment] = useState(commentId);
-  console.log(commentId);
+  // console.log(commentId);
 
   useEffect(() => {
     if (commentId) {
@@ -14,7 +14,7 @@ const FullComment = ({ commentId }) => {
     }
   }, [commentId]);
 
-  console.log(fullComment);
+  // console.log(fullComment);
 
   let commentDetail = <p> hanooz Load nashodim </p>;
 

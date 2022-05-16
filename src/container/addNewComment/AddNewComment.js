@@ -16,17 +16,19 @@ const AddComment = () => {
   const postHandler = (e) => {
     e.preventDefault();
     axios
-      .post("https://jsonplaceholder.typicode.com/comments", {
+      .post("http://localhost:3001/comments", {
         ...newComment,
         postId: 10,
       })
       .then((res) => console.log(res.data))
       .catch();
-      setNewComment({
-        name:"", email:"",body:""
-    })
+    setNewComment({
+      name: "",
+      email: "",
+      body: "",
+    });
   };
-  
+
   return (
     <div className={styles.holder}>
       <p> Add New Comment</p>

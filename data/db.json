@@ -1,0 +1,32 @@
+{
+  "comments": [
+    {
+      "name": "علیرضا اسماعیلی",
+      "email": "alirezaesm921@gmail.com",
+      "body": "this is the test of json server\n",
+      "postId": 10,
+      "id": 5
+    },
+    {
+      "name": "AliReza",
+      "email": "alirezaesm921@gmail.com",
+      "body": "Alirzea Esm Is react developer",
+      "postId": 10,
+      "id": 6
+    },
+    {
+      "name": "ALIREZAAAAA",
+      "email": "alirezaesm921@gmail.com",
+      "body": "KHEilii khafaniiii",
+      "postId": 10,
+      "id": 7
+    },
+    {
+      "name": "AliReza ESM ",
+      "email": "alirezaesm921@gmail.com",
+      "body": "agha damet kheili garme ",
+      "postId": 10,
+      "id": 8
+    }
+  ]
+}

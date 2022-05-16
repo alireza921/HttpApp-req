@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import styles from "./style.module.css";
+import { FaTimes } from "react-icons/fa";
 
 const FullComment = ({ commentId }) => {
   const [fullComment, setFullComment] = useState(commentId);
@@ -8,11 +10,18 @@ const FullComment = ({ commentId }) => {
   useEffect(() => {
     if (commentId) {
       axios
-        .get(`https://jsonplaceholder.typicode.com/comments/${commentId}`)
+        .get(`http://localhost:3001/comments/${commentId}`)
         .then((res) => setFullComment(res.data))
         .catch();
     }
   }, [commentId]);
+
+  const deletHandler = () => {
+    axios
+      .delete(`http://localhost:3001/comments/${commentId}`)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
+  };
 
   // console.log(fullComment);
 
@@ -21,12 +30,16 @@ const FullComment = ({ commentId }) => {
   if (commentId) commentDetail = <p> Loading ... </p>;
 
   if (fullComment) {
-    commentDetail = 
-    <div>
-      <p> {fullComment.name} </p>
-      <p> {fullComment.email}</p>
-      <p> {fullComment.body}</p>
-    </div>;
+    commentDetail = (
+      <div className={styles.holder}>
+        <span className={styles.close} onClick={deletHandler}>
+          <FaTimes />
+        </span>
+        <p> {fullComment.name} </p>
+        <p> {fullComment.email}</p>
+        <p> {fullComment.body}</p>
+      </div>
+    );
   }
 
   return commentDetail;

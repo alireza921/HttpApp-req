@@ -7,21 +7,20 @@ import AddComment from "./addNewComment/AddNewComment";
 
 const HttpApp = () => {
   const [comment, setComment] = useState(null);
-    const[commentId,setCommentId] = useState(null) ;
+  const [commentId, setCommentId] = useState(null);
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/comments")
+      .get("http://localhost:3001/comments")
       .then((res) => {
         setComment(res.data.slice(0, 4));
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const selectId = (id) => { 
-      setCommentId(id) ; 
-     
-  }
+  const selectId = (id) => {
+    setCommentId(id);
+  };
 
   // console.log(commentId);
 
@@ -30,7 +29,12 @@ const HttpApp = () => {
       <section className={styles.commentHolder}>
         {comment ? (
           comment.map((c) => (
-            <Comment key={c.id} name={c.name} email={c.email} onClick={() => selectId(c.id)} />
+            <Comment
+              key={c.id}
+              name={c.name}
+              email={c.email}
+              onClick={() => selectId(c.id)}
+            />
           ))
         ) : (
           <p> loading . . . </p>
@@ -38,11 +42,11 @@ const HttpApp = () => {
       </section>
 
       <section className={styles.fullCommentHolder}>
-       <FullComment commentId={commentId} /> 
+        <FullComment commentId={commentId} />
       </section>
 
       <section className={styles.addCommentHolder}>
-        <AddComment/> 
+        <AddComment />
       </section>
     </main>
   );

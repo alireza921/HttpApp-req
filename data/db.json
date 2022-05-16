@@ -8,25 +8,25 @@
       "id": 5
     },
     {
-      "name": "AliReza",
+      "name": "alireza esmaeili ",
       "email": "alirezaesm921@gmail.com",
-      "body": "Alirzea Esm Is react developer",
+      "body": "in test update comment hastesh ",
       "postId": 10,
-      "id": 6
+      "id": 9
     },
     {
-      "name": "ALIREZAAAAA",
+      "name": "setNewComment",
       "email": "alirezaesm921@gmail.com",
-      "body": "KHEilii khafaniiii",
+      "body": "in test setNewComment hastesh \nke form ro khali mikone bad az Submit shodan ",
       "postId": 10,
-      "id": 7
+      "id": 10
     },
     {
-      "name": "AliReza ESM ",
+      "name": "dstrctr props",
       "email": "alirezaesm921@gmail.com",
-      "body": "agha damet kheili garme ",
+      "body": "in test dstrctr kardan e props tooye NewComment hast esh \nke onAddComment => props.onAddComment bood = onAddComment ",
       "postId": 10,
-      "id": 8
+      "id": 11
     }
   ]
 }

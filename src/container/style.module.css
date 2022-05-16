@@ -1,8 +1,8 @@
 
 
-.holder { 
+.main { 
     width: 79%;
-    height: 120vh;
+    /* height: 120vh; */
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -17,6 +17,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .fullCommentHolder{ 

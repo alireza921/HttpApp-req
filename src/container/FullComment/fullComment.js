@@ -19,8 +19,8 @@ const FullComment = ({ commentId }) => {
   const deletHandler = () => {
     axios
       .delete(`http://localhost:3001/comments/${commentId}`)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
 
   // console.log(fullComment);

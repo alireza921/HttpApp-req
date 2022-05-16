@@ -13,7 +13,7 @@ const HttpApp = () => {
     axios
       .get("http://localhost:3001/comments")
       .then((res) => {
-        setComment(res.data.slice(0, 4));
+        setComment(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -22,10 +22,25 @@ const HttpApp = () => {
     setCommentId(id);
   };
 
+  const newCommentHandler = (newComment,setNewComment) => {
+    axios
+      .post("http://localhost:3001/comments", {
+        ...newComment,
+        postId: 10,
+      })
+      .then((res) => axios.get("http://localhost:3001/comments"))
+      .then(res => setComment(res.data))
+      .catch();
+    setNewComment({
+      name: "",
+      email: "",
+      body: "",
+    });
+  };
   // console.log(commentId);
 
   return (
-    <main className={styles.holder}>
+    <main className={styles.main}>
       <section className={styles.commentHolder}>
         {comment ? (
           comment.map((c) => (
@@ -46,7 +61,7 @@ const HttpApp = () => {
       </section>
 
       <section className={styles.addCommentHolder}>
-        <AddComment />
+        <AddComment onAddComment={newCommentHandler} />
       </section>
     </main>
   );

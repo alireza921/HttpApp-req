@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import styles from "../addNewComment/style.module.css";
 
-const AddComment = () => {
+const AddComment = ({onAddComment}) => {
   const [newComment, setNewComment] = useState({
     name: "",
     email: "",
@@ -15,18 +15,8 @@ const AddComment = () => {
 
   const postHandler = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/comments", {
-        ...newComment,
-        postId: 10,
-      })
-      .then((res) => console.log(res.data))
-      .catch();
-    setNewComment({
-      name: "",
-      email: "",
-      body: "",
-    });
+    onAddComment(newComment,setNewComment);
+    
   };
 
   return (

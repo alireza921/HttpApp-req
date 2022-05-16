@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "./style.module.css";
-import { FaTimes } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 
 const FullComment = ({ commentId }) => {
   const [fullComment, setFullComment] = useState(commentId);
@@ -32,8 +32,8 @@ const FullComment = ({ commentId }) => {
   if (fullComment) {
     commentDetail = (
       <div className={styles.holder}>
-        <span className={styles.close} onClick={deletHandler}>
-          <FaTimes />
+        <span className={styles.delete} onClick={deletHandler}>
+          <FaTrash />
         </span>
         <p> {fullComment.name} </p>
         <p> {fullComment.email}</p>

@@ -57,7 +57,7 @@ const HttpApp = () => {
       </section>
 
       <section className={styles.fullCommentHolder}>
-        <FullComment commentId={commentId} />
+        <FullComment commentId={commentId} setComment={setComment} />
       </section>
 
       <section className={styles.addCommentHolder}>

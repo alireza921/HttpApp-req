@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import { FaTrash } from "react-icons/fa";
 
-const FullComment = ({ commentId }) => {
+const FullComment = ({ commentId, setComment }) => {
   const [fullComment, setFullComment] = useState(commentId);
   // console.log(commentId);
 
@@ -19,8 +19,13 @@ const FullComment = ({ commentId }) => {
   const deletHandler = () => {
     axios
       .delete(`http://localhost:3001/comments/${commentId}`)
-      .then((res) => console.log(res.data))
+      .then((res) =>
+        axios
+          .get("http://localhost:3001/comments/")
+          .then((res) => setComment(res.data))
+      )
       .catch((err) => console.log(err));
+      setFullComment(null)
   };
 
   // console.log(fullComment);

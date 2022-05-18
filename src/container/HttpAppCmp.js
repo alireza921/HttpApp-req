@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import Comment from "../component/comment/CommentCmp";
-import axios from "axios";
+import http from "../services/httpService";
 import FullComment from "./FullComment/fullComment";
 import AddComment from "./addNewComment/AddNewComment";
+import {toast } from 'react-toastify';
+
 
 const HttpApp = () => {
   const [comment, setComment] = useState(null);
   const [commentId, setCommentId] = useState(null);
   const [err, setErr] = useState(false);
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/comments")
+    http
+      .get("/comments")
       .then((res) => {
         setComment(res.data);
       })
@@ -23,12 +25,12 @@ const HttpApp = () => {
   };
 
   const newCommentHandler = (newComment, setNewComment) => {
-    axios
-      .post("http://localhost:3001/comments", {
+    http
+      .post("/comments", {
         ...newComment,
         postId: 10,
       })
-      .then((res) => axios.get("http://localhost:3001/comments"))
+      .then((res) => http.get("/comments"))
       .then((res) => setComment(res.data))
       .catch();
     setNewComment({
@@ -42,9 +44,13 @@ const HttpApp = () => {
   const renderComments = () => {
     let renderCm = <p> the data is Loading . . . </p>;
 
-    if (err) renderCm = <p> data fetching field . . . </p>;
+    if (err) {
+      renderCm = <p> data fetching field . . . </p>;
+      // toast.error('ridi k amoo')
+    }
 
     if (comment) {
+      // toast.success('data recived')
       renderCm = comment.map((c) => (
         <Comment
           key={c.id}
@@ -62,7 +68,7 @@ const HttpApp = () => {
       <section className={styles.commentHolder}>{renderComments()}</section>
 
       <section className={styles.fullCommentHolder}>
-        <FullComment commentId={commentId} setComment={setComment} />
+        <FullComment commentId={commentId} setCommentId={setCommentId} setComment={setComment} />
       </section>
 
       <section className={styles.addCommentHolder}>

@@ -4,42 +4,63 @@ import Comment from "../component/comment/CommentCmp";
 import http from "../services/httpService";
 import FullComment from "./FullComment/fullComment";
 import AddComment from "./addNewComment/AddNewComment";
-import {toast } from 'react-toastify';
-
+import { getAllComment } from "../services/getAllComment";
+import { addNewComment } from "../services/addNewComment";
+import { getOneComment } from "../services/getOneComment";
+// import {toast } from 'react-toastify';
 
 const HttpApp = () => {
   const [comment, setComment] = useState(null);
   const [commentId, setCommentId] = useState(null);
   const [err, setErr] = useState(false);
+
   useEffect(() => {
-    http
-      .get("/comments")
-      .then((res) => {
-        setComment(res.data);
-      })
-      .catch((err) => setErr(true));
+    const getComment = async () => {
+      try {
+        const { data } = await getAllComment();
+        setComment(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getComment();
   }, []);
+
+  // We also can do like This - ( its True too :): 
+  // async function getComment() {
+  //   try {
+  //     const {data} = await getAllComment() ;
+  //     setComment(data);
+  //   }
+  //   catch(err) {
+  //     console.log(err);
+  //   }
+  // }
 
   const selectId = (id) => {
     setCommentId(id);
   };
 
-  const newCommentHandler = (newComment, setNewComment) => {
-    http
-      .post("/comments", {
+  const newCommentHandler = async (newComment, setNewComment) => {
+    try {
+      await addNewComment({
         ...newComment,
         postId: 10,
-      })
-      .then((res) => http.get("/comments"))
-      .then((res) => setComment(res.data))
-      .catch();
+      });
+      const { data } = await getAllComment();
+      setComment(data);
+    } catch (err) {
+      console.log(err);
+    }
+
     setNewComment({
       name: "",
       email: "",
       body: "",
     });
+  
   };
-  // console.log(commentId);
+
 
   const renderComments = () => {
     let renderCm = <p> the data is Loading . . . </p>;
@@ -68,7 +89,11 @@ const HttpApp = () => {
       <section className={styles.commentHolder}>{renderComments()}</section>
 
       <section className={styles.fullCommentHolder}>
-        <FullComment commentId={commentId} setCommentId={setCommentId} setComment={setComment} />
+        <FullComment
+          commentId={commentId}
+          setCommentId={setCommentId}
+          setComment={setComment}
+        />
       </section>
 
       <section className={styles.addCommentHolder}>

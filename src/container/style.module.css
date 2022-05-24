@@ -20,6 +20,10 @@
     flex-wrap: wrap;
 }
 
+.commentHolder a { 
+    text-decoration: none;
+}
+
 .fullCommentHolder{ 
     width: 55%;
     background-color: #c7d2fe;

@@ -7,6 +7,7 @@ import AddComment from "./addNewComment/AddNewComment";
 import { getAllComment } from "../services/getAllComment";
 import { addNewComment } from "../services/addNewComment";
 import { getOneComment } from "../services/getOneComment";
+import { Link } from "react-router-dom";
 // import {toast } from 'react-toastify';
 
 const HttpApp = () => {
@@ -26,7 +27,7 @@ const HttpApp = () => {
     getComment();
   }, []);
 
-  // We also can do like This - ( its True too :): 
+  // We also can do like This - ( its True too :):
   // async function getComment() {
   //   try {
   //     const {data} = await getAllComment() ;
@@ -58,9 +59,7 @@ const HttpApp = () => {
       email: "",
       body: "",
     });
-  
   };
-
 
   const renderComments = () => {
     let renderCm = <p> the data is Loading . . . </p>;
@@ -73,12 +72,13 @@ const HttpApp = () => {
     if (comment) {
       // toast.success('data recived')
       renderCm = comment.map((c) => (
-        <Comment
-          key={c.id}
-          name={c.name}
-          email={c.email}
-          onClick={() => selectId(c.id)}
-        />
+        <Link to={`/fullcomment/${c.id}`} key={c.id}>
+          <Comment
+            name={c.name}
+            email={c.email}
+            onClick={() => selectId(c.id)}
+          />
+        </Link>
       ));
     }
     return renderCm;
@@ -88,17 +88,17 @@ const HttpApp = () => {
     <main className={styles.main}>
       <section className={styles.commentHolder}>{renderComments()}</section>
 
-      <section className={styles.fullCommentHolder}>
+      {/* <section className={styles.fullCommentHolder}>
         <FullComment
           commentId={commentId}
           setCommentId={setCommentId}
           setComment={setComment}
         />
-      </section>
+      </section> */}
 
-      <section className={styles.addCommentHolder}>
+      {/* <section className={styles.addCommentHolder}>
         <AddComment onAddComment={newCommentHandler} />
-      </section>
+      </section> */}
     </main>
   );
 };

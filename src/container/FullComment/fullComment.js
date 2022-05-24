@@ -5,9 +5,14 @@ import { FaTrash } from "react-icons/fa";
 import { deleteComment } from "../../services/deleteComment";
 import { getOneComment } from "../../services/getOneComment";
 import { getAllComment } from "../../services/getAllComment";
+import { useParams } from "react-router-dom";
 
-const FullComment = ({ commentId, setCommentId, setComment }) => {
-  const [fullComment, setFullComment] = useState(commentId);
+const FullComment = ({setCommentId, setComment }) => {
+
+  const params = useParams(); 
+  const commentId = params.id ;
+
+  const [fullComment, setFullComment] = useState(null);
   // console.log(commentId);
   useEffect(() => {
     if (commentId) {

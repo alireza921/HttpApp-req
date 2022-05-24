@@ -15,7 +15,9 @@ const AddComment = ({onAddComment}) => {
 
   const postHandler = (e) => {
     e.preventDefault();
+    console.log("postHandler");
     onAddComment(newComment,setNewComment);
+
     
   };
 

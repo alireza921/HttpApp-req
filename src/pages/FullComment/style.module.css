@@ -1,0 +1,30 @@
+
+.holder { 
+    position: relative;
+    width: 55%;
+    background-color: #f5f7ff;
+    border: solid 1px #3730a3;
+    color: #3730a3;
+    border-radius: 12px;
+    font-size: 20px;
+    padding: 5px;
+    margin: 12px 0px;
+}
+
+.holder a { 
+    text-decoration: none;
+    color: #323448;
+    font-weight: bold;
+}
+
+.active { 
+    color: yellow; 
+}
+
+.delete{ 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: rgb(228, 156, 156);
+}

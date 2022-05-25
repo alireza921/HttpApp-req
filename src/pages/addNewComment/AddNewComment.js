@@ -1,8 +1,10 @@
 // import axios from "axios";
 import { useState } from "react";
 import styles from "../addNewComment/style.module.css";
-
-const AddComment = ({onAddComment}) => {
+import { addNewComment } from "../../services/addNewComment";
+import { useNavigate } from "react-router-dom";
+const AddComment = () => {
+  const navigate = useNavigate();
   const [newComment, setNewComment] = useState({
     name: "",
     email: "",
@@ -13,12 +15,24 @@ const AddComment = ({onAddComment}) => {
     setNewComment({ ...newComment, [e.target.name]: e.target.value });
   };
 
-  const postHandler = (e) => {
-    e.preventDefault();
-    console.log("postHandler");
-    onAddComment(newComment,setNewComment);
-
+  const postHandler = async  (e) => {
+    try {
+      e.preventDefault();
+      console.log("postHandler");
+          await addNewComment({
+            ...newComment,
+            postId: 10,
+          });
+          navigate('/');
+        } catch (err) {
+          console.log(err);
+        }
     
+        setNewComment({
+          name: "",
+          email: "",
+          body: "",
+        });
   };
 
   return (

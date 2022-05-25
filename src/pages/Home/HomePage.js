@@ -1,9 +1,9 @@
-import HttpApp from "../../container/HttpAppCmp";
+import HttpApp from "../../component/commentList/HttpAppCmp";
 
 const HomePage = () => {
     return ( 
         <div> 
-            HomePage Cmp : 
+            <h2> HomePage Cmp :  </h2>
             <HttpApp />
         </div>
      );

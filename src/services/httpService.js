@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3002";
+axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 axios.interceptors.response.use(
   (response) => {
     console.log(response);

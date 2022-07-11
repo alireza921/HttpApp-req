@@ -3,7 +3,7 @@ import styles from "./style.module.css";
 import Comment from "./comment/CommentCmp";
 import { getAllComment } from "../../services/getAllComment";
 import { Link } from "react-router-dom";
-// import {toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const HttpApp = () => {
   const [comment, setComment] = useState(null);
@@ -15,7 +15,7 @@ const HttpApp = () => {
         const { data } = await getAllComment();
         setComment(data);
       } catch (err) {
-        console.log(err);
+        setErr(err);
       }
     };
     getComment();
@@ -26,17 +26,14 @@ const HttpApp = () => {
 
     if (err) {
       renderCm = <p> data fetching field . . . </p>;
-      // toast.error('ridi k amoo')
+      toast.error("Fetching data feild");
     }
 
     if (comment) {
-      // toast.success('data recived')
-      renderCm = comment.map((c) => (
+      toast.success("data recived");
+      renderCm = comment.slice(0,4).map((c) => (
         <Link to={`/fullcomment/${c.id}`} key={c.id}>
-          <Comment
-            name={c.name}
-            email={c.email}
-          />
+          <Comment name={c.name} email={c.email} />
         </Link>
       ));
     }
@@ -47,4 +44,3 @@ const HttpApp = () => {
 };
 
 export default HttpApp;
-

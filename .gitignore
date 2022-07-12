@@ -27,3 +27,5 @@ chek nevis
 
 #node module 
 node_modules/
+# Local Netlify folder
+.netlify

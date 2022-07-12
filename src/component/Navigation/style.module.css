@@ -8,7 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #696b85;
+    background-color: #fff;
+    border: solid 1px #3730a3;
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -29,7 +30,7 @@
 
 .item a { 
     text-decoration: none;
-     color: #ebe9e9;
+     color: #3730a3;
     font-weight: bold;
     padding: 12px;
 } 
@@ -37,11 +38,11 @@
 
 
 .item a:hover { 
-    color:#696b85 ;
+    color:#0f1670 ;
 }
 
 .item :focus { 
-color: #696b85;
+color: #0f1670;
 background-color: #ebe9e9;
 padding: 12px;
 

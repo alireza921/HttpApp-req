@@ -1,6 +1,7 @@
 .footer{ 
-    background: rgb(105, 107, 133);
-    color: aliceblue;
+    background: #fff;
+    color: #3730a3;
     padding: 8px;
     width: 100%;
+    border: solid 1px #3730a3;
 }
